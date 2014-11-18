@@ -5,19 +5,19 @@
 # Configuration 
 #--------------------------------------------------------------------------------------------------------------------------------
 
-BOARD="bananapi"						# bananapi, cubietruck, cubox-i, bananapi-next, cubietruck-next
+BOARD="lime2"							# lime, lime2
 RELEASE="wheezy"                                   		# jessie or wheezy
-VERSION="Banana Debian 1.5 $RELEASE"               		# just name
+VERSION="Lime2 Debian 1.0 $RELEASE"               		# just name
 SOURCE_COMPILE="yes"                               		# yes / no
 KERNEL_CONFIGURE="yes"						# do you want to change my default configuration
 DEST_LANG="en_US.UTF-8"                         	 	# sl_SI.UTF-8, en_US.UTF-8
 TZDATA="Europe/Ljubljana"                         		# Timezone
 DEST=$(pwd)/output                      		      	# Destination
 ROOTPWD="1234"                               		  	# Must be changed @first login
-HOST="banana"						 	# Hostname
+HOST="lime"						 	# Hostname
 USEALLCORES="no"						# Use all CPU cores for compiling
 SDSIZE="1000"							# SD image size in MB
-FBTFT="no"							# Small TFT support, https://github.com/notro/fbtft
+FBTFT="yes"							# Small TFT support, https://github.com/notro/fbtft
 
 #--------------------------------------------------------------------------------------------------------------------------------
 # superuser have to do this
