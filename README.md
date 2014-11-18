@@ -1,14 +1,13 @@
-BananaPi Debian
+Lime / Lime2 Debian
 ================
-![](http://www.igorpecovnik.com/wp-content/uploads/2014/09/bananapi-ssh.png)
 
-Script to create bootable SD card image of Debian for Banana PI.
+Script to create bootable SD card image of Debian for Olimex Lime / Lime2.
 
 [Check build libraries](https://github.com/igorpecovnik/lib)
 
 Prebuild images, support & history
 ------------------
-[http://www.igorpecovnik.com/2014/09/07/banana-pi-debian-sd-image/](http://www.igorpecovnik.com/2014/09/07/banana-pi-debian-sd-image/ "Download")
+[http://www.igorpecovnik.com/2014/11/18/olimex-lime-debian-sd-image/](http://www.igorpecovnik.com/2014/11/18/olimex-lime-debian-sd-image/ "Download")
 
 Thank you for your donation
 ------------------
@@ -26,9 +25,9 @@ DIY
 ```shell
 sudo apt-get -y install git
 cd ~
-git clone https://github.com/igorpecovnik/BananaPI-Debian
-chmod +x ./BananaPI-Debian/build.sh
-cd ./BananaPI-Debian
+git clone https://github.com/igorpecovnik/Lime-Debian
+chmod +x ./Lime-Debian/build.sh
+cd ./Lime-Debian
 ```
 edit build.sh and alter configuration
 
@@ -37,4 +36,4 @@ sudo ./build.sh
 ```
 - Wait around 3h on a 10Mbit line and average desktop computer.
 - If build is succesfull you will find zipped image in your **output/output** directory. Unzip and burn with supplied writter or DD (Unix / Mac) to your SD card.
-- Boot your Banana :=)
+- Boot your Lime/Lime2 :=)
