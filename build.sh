@@ -5,8 +5,9 @@
 # Configuration 
 #--------------------------------------------------------------------------------------------------------------------------------
 
-BOARD="lime2"							# lime, lime2
+BOARD="lime2"							# lime (512Mb), lime2 (1024Mb)
 RELEASE="wheezy"                                   		# jessie or wheezy
+BRANCH="default"						# default=3.4.x, mainline=next
 VERSION="Lime2 Debian 1.0 $RELEASE"               		# just name
 SOURCE_COMPILE="yes"                               		# yes / no
 KERNEL_CONFIGURE="yes"						# do you want to change my default configuration
@@ -17,13 +18,17 @@ ROOTPWD="1234"                               		  	# Must be changed @first login
 HOST="lime"						 	# Hostname
 USEALLCORES="no"						# Use all CPU cores for compiling
 SDSIZE="1000"							# SD image size in MB
-FBTFT="yes"							# Small TFT support, https://github.com/notro/fbtft
+FBTFT="no"							# Small TFT support, https://github.com/notro/fbtft
 
 #--------------------------------------------------------------------------------------------------------------------------------
 # superuser have to do this
 if [ "$UID" -ne 0 ]
   then echo "Please run as root"
   exit
+fi
+
+if [ "$BRANCH" == "next" ]; then
+	BOARD=$BOARD"-"$BRANCH
 fi
 
 # source is where we start the script
