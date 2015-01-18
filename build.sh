@@ -8,42 +8,44 @@
 BOARD="lime2"							# lime (512Mb), lime2 (1024Mb), micro (1024Mb)
 RELEASE="wheezy"                                   		# jessie or wheezy
 BRANCH="default"						# default=3.4.x, mainline=next
-VERSION="${BOARD^} Debian 1.0 $RELEASE"               		# just name
-SOURCE_COMPILE="yes"                               		# yes / no
-KERNEL_CONFIGURE="yes"						# do you want to change my default configuration
-DEST_LANG="en_US.UTF-8"                         	 	# sl_SI.UTF-8, en_US.UTF-8
-TZDATA="Europe/Ljubljana"                         		# Timezone
-DEST=$(pwd)/output                      		      	# Destination
-ROOTPWD="1234"                               		  	# Must be changed @first login
-HOST="$BOARD"						 	# Hostname
-USEALLCORES="no"						# Use all CPU cores for compiling
-SDSIZE="1000"							# SD image size in MB
-FBTFT="no"							# Small TFT support, https://github.com/notro/fbtft
 
-#--------------------------------------------------------------------------------------------------------------------------------
-# superuser have to do this
-if [ "$UID" -ne 0 ]
-  then echo "Please run as root"
-  exit
-fi
+# numbers
+SDSIZE="1200"                               			# SD image size in MB
+REVISION="1.4"                          			# image release version
 
-if [ "$BRANCH" == "next" ]; then
-	BOARD=$BOARD"-"$BRANCH
-fi
+# method
+SOURCE_COMPILE="yes"             				# force source compilation: yes / no
+KERNEL_CONFIGURE="no"           				# want to change my default configuration
+KERNEL_CLEAN="yes"						# run MAKE clean before kernel compilation
+USEALLCORES="yes"                           			# Use all CPU cores for compiling
+
+# user 
+DEST_LANG="en_US.UTF-8"                     			# sl_SI.UTF-8, en_US.UTF-8
+TZDATA="Europe/Ljubljana"               			# Timezone
+ROOTPWD="1234"                              			# Must be changed @first login
+MAINTAINER="Igor Pecovnik"                  			# deb signature
+MAINTAINERMAIL="igor.pecovnik@****l.com"    			# deb signature
+
+# advanced
+FBTFT="no"                                 			# https://github.com/notro/fbtft 
+EXTERNAL="no"                           			# compile extra drivers`
+
+#---------------------------------------------------------------------------------------
 
 # source is where we start the script
 SRC=$(pwd)
 
+# destination
+DEST=$(pwd)/output
+
 # get updates of the main build libraries
 if [ -d "$SRC/lib" ]; then
-	cd $SRC/lib
-	git pull 
+    cd $SRC/lib
+    git pull 
 else
-	git clone https://github.com/igorpecovnik/lib lib
+    # download SDK
+    git clone https://github.com/igorpecovnik/lib
 fi
-cd $SRC
 
-source $SRC/lib/boards.config # Board configuration
-source $SRC/lib/common.sh # Functions
-source $SRC/lib/main.sh # Main
-#--------------------------------------------------------------------------------------------------------------------------------
+source $SRC/lib/main.sh
+#---------------------------------------------------------------------------------------
